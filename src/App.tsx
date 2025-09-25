@@ -27,6 +27,8 @@ import Pricing from "./components/pricing";
 import Faq from "./components/faq";
 import SignIn from "./components/sign-in";
 import Register from "./components/register";
+import Quiz from "./components/quiz";
+import Dashboard from "./components/dashboard";
 import NotFound from "./components/Error";
 import Contact from "./components/contact";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -59,6 +61,8 @@ const router = createBrowserRouter([
   { path: "/faq", element: <Faq /> },
   { path: "/sign-in", element: <SignIn /> },
   { path: "/register", element: <Register /> },
+  { path: "/quiz", element: <Quiz /> },
+  { path: "/dashboard", element: <Dashboard /> },
   { path: "/contact", element: <Contact /> },
 
   { path: "*", element: <NotFound /> },

@@ -60,9 +60,11 @@ const RegisterForm = () => {
         formData.password,
         `${formData.firstName} ${formData.lastName}`
       );
-      setSuccess("Account created successfully! Redirecting...");
+      setSuccess(
+        "Account created successfully! Taking you to the career guidance quiz..."
+      );
       setTimeout(() => {
-        navigate("/"); // Redirect to home page after successful registration
+        navigate("/quiz"); // Redirect to quiz after successful registration
       }, 1500);
     } catch (error: any) {
       console.error("Registration error:", error);

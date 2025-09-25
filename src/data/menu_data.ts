@@ -1,5 +1,3 @@
-import demo_img_1 from "../../public/assets/img/header/home-1.jpg";
-
 interface DataType {
   id: number;
   title?: string;
@@ -29,17 +27,9 @@ const menu_data: DataType[] = [
   {
     id: 1,
     title: "Home",
-    link: "#",
+    link: "/",
     icon: "fas fa-home-lg",
-    img_dropdown: true,
-    sub_menus: [
-      {
-        link: "/",
-        demo_img: demo_img_1,
-        title: "CollegeMatch",
-        title2: "CollegeMatch",
-      },
-    ],
+    has_dropdown: false,
   },
   {
     id: 2,
@@ -51,7 +41,7 @@ const menu_data: DataType[] = [
   {
     id: 3,
     title: "Quiz",
-    link: "#quiz",
+    link: "/register",
     icon: "fas fa-question-circle",
     has_dropdown: false,
   },
@@ -60,13 +50,6 @@ const menu_data: DataType[] = [
     title: "About",
     link: "#about",
     icon: "fas fa-info-circle",
-    has_dropdown: false,
-  },
-  {
-    id: 5,
-    title: "Team",
-    link: "#team",
-    icon: "fas fa-users",
     has_dropdown: false,
   },
   {
