@@ -1,4 +1,4 @@
-const MarqueeOne = ({ style_2 }: any) => {
+const MarqueeOne = ({ style_2 }: { style_2?: boolean }) => {
   return (
     <>
       <div className="marquee-section style-header">
@@ -15,7 +15,7 @@ const MarqueeOne = ({ style_2 }: any) => {
                 Matching
               </div>
               <div className={`cmn-textslide ${style_2 ? "text-color-2" : ""}`}>
-                <i className="flaticon-mortarboard"></i> 500+ Top Colleges &
+                <i className="flaticon-mortarboard"></i> 200+ Top Colleges &
                 Universities
               </div>
               <div className={`cmn-textslide ${style_2 ? "text-color-2" : ""}`}>
@@ -26,9 +26,9 @@ const MarqueeOne = ({ style_2 }: any) => {
                 <i className="flaticon-mortarboard"></i> Smart Quiz-Based
                 Discovery
               </div>
-              <div className={`cmn-textslide ${style_2 ? "text-color-2" : ""}`}>
+              {/* <div className={`cmn-textslide ${style_2 ? "text-color-2" : ""}`}>
                 <i className="flaticon-mortarboard"></i> 10,000+ Students Helped
-              </div>
+              </div> */}
               <div className={`cmn-textslide ${style_2 ? "text-color-2" : ""}`}>
                 <i className="flaticon-mortarboard"></i> Career Path Guidance
               </div>
@@ -44,7 +44,7 @@ const MarqueeOne = ({ style_2 }: any) => {
                 Matching
               </div>
               <div className={`cmn-textslide ${style_2 ? "text-color-2" : ""}`}>
-                <i className="flaticon-mortarboard"></i> 500+ Top Colleges &
+                <i className="flaticon-mortarboard"></i> 200+ Top Colleges &
                 Universities
               </div>
               <div className={`cmn-textslide ${style_2 ? "text-color-2" : ""}`}>
@@ -55,9 +55,9 @@ const MarqueeOne = ({ style_2 }: any) => {
                 <i className="flaticon-mortarboard"></i> Smart Quiz-Based
                 Discovery
               </div>
-              <div className={`cmn-textslide ${style_2 ? "text-color-2" : ""}`}>
+              {/* <div className={`cmn-textslide ${style_2 ? "text-color-2" : ""}`}>
                 <i className="flaticon-mortarboard"></i> 10,000+ Students Helped
-              </div>
+              </div> */}
               <div className={`cmn-textslide ${style_2 ? "text-color-2" : ""}`}>
                 <i className="flaticon-mortarboard"></i> Career Path Guidance
               </div>
@@ -73,7 +73,7 @@ const MarqueeOne = ({ style_2 }: any) => {
                 Matching
               </div>
               <div className={`cmn-textslide ${style_2 ? "text-color-2" : ""}`}>
-                <i className="flaticon-mortarboard"></i> 500+ Top Colleges &
+                <i className="flaticon-mortarboard"></i> 200+ Top Colleges &
                 Universities
               </div>
               <div className={`cmn-textslide ${style_2 ? "text-color-2" : ""}`}>
@@ -84,9 +84,9 @@ const MarqueeOne = ({ style_2 }: any) => {
                 <i className="flaticon-mortarboard"></i> Smart Quiz-Based
                 Discovery
               </div>
-              <div className={`cmn-textslide ${style_2 ? "text-color-2" : ""}`}>
+              {/* <div className={`cmn-textslide ${style_2 ? "text-color-2" : ""}`}>
                 <i className="flaticon-mortarboard"></i> 10,000+ Students Helped
-              </div>
+              </div> */}
               <div className={`cmn-textslide ${style_2 ? "text-color-2" : ""}`}>
                 <i className="flaticon-mortarboard"></i> Career Path Guidance
               </div>

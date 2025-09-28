@@ -14,7 +14,7 @@ const HeaderTwo = () => {
         <div className="container">
           <div className="header-top">
             <Link to="/" className="top-logo">
-              <img src="assets/img/logo/black-logo.svg" alt="img" />
+              <img src="assets/img/logo/siksha marg.png" alt="eduमार्ग Logo" />
             </Link>
             <form
               onSubmit={(e) => e.preventDefault()}
@@ -37,7 +37,7 @@ const HeaderTwo = () => {
             <div className="mega-menu-wrapper">
               <div className="header-main">
                 <Link to="/" className="header-logo">
-                  <img src="assets/img/logo/black-logo.svg" alt="logo-img" />
+                  <img src="assets/img/logo/Logo-2.png" alt="eduमार्ग Logo" />
                 </Link>
                 <div className="header-left">
                   <div className="mean__menu-wrapper">

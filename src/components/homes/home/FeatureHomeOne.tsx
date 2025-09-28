@@ -2,7 +2,7 @@ const FeatureHomeOne = () => {
   return (
     <>
       <section className="feature-section">
-        <div className="row gx-0 row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5">
+        <div className="row gx-0 row-cols-1 row-cols-sm-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3 justify-content-center">
           <div className="col wow fadeInUp">
             <div className="feature-box-items">
               <div className="icon">
@@ -13,34 +13,6 @@ const FeatureHomeOne = () => {
                 <p>
                   Take our intelligent quiz to discover your perfect college and
                   degree match
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col wow fadeInUp" data-wow-delay=".2s">
-            <div className="feature-box-items">
-              <div className="icon">
-                <i className="flaticon-online-education"></i>
-              </div>
-              <div className="content">
-                <h3>500+ Colleges</h3>
-                <p>
-                  Explore our comprehensive database of colleges and
-                  universities worldwide
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="col wow fadeInUp" data-wow-delay=".4s">
-            <div className="feature-box-items">
-              <div className="icon">
-                <i className="flaticon-community"></i>
-              </div>
-              <div className="content">
-                <h3>10,000+ Students</h3>
-                <p>
-                  Join thousands of students who found their perfect college
-                  match
                 </p>
               </div>
             </div>

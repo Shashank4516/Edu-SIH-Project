@@ -1,7 +1,6 @@
 import NavMenu from "./NavMenu";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Search from "../../common/Search";
 import UseSticky from "../../hooks/UseSticky";
 import OffCanvas from "../../common/OffCanvas";
 import MarqueeOne from "../../common/MarqueeOne";
@@ -11,7 +10,6 @@ const HeaderOne = () => {
   const { sticky } = UseSticky();
   const { currentUser, logout } = useAuth();
 
-  const [open, setOpen] = useState(false);
   const [openCanvas, setOpenCanvas] = useState(false);
 
   const handleLogout = async () => {
@@ -35,7 +33,7 @@ const HeaderOne = () => {
               <div className="header-left">
                 <div className="logo">
                   <Link to="/" className="header-logo">
-                    <img src="assets/img/logo/black-logo.svg" alt="logo-img" />
+                    <img src="assets/img/logo/Logo-2.png" alt="eduमार्ग Logo" />
                   </Link>
                 </div>
               </div>
@@ -46,14 +44,6 @@ const HeaderOne = () => {
                       <NavMenu />
                     </nav>
                   </div>
-                </div>
-                <div className="header-search">
-                  <button
-                    onClick={() => setOpen(!open)}
-                    className="d-flex align-items-center search-toggle"
-                  >
-                    <i className="fas fa-search"></i>
-                  </button>
                 </div>
                 <div className="header-button">
                   {currentUser ? (
@@ -100,7 +90,6 @@ const HeaderOne = () => {
         </div>
       </header>
 
-      <Search open={open} setOpen={setOpen} />
       <OffCanvas openCanvas={openCanvas} setOpenCanvas={setOpenCanvas} />
     </>
   );

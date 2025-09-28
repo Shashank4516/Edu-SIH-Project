@@ -38,13 +38,13 @@ const menu_data: DataType[] = [
     icon: "fas fa-university",
     has_dropdown: false,
   },
-  {
-    id: 3,
-    title: "Quiz",
-    link: "/register",
-    icon: "fas fa-question-circle",
-    has_dropdown: false,
-  },
+  // {
+  //   id: 3,
+  //   title: "Quiz",
+  //   link: "/register",
+  //   icon: "fas fa-question-circle",
+  //   has_dropdown: false,
+  // },
   {
     id: 4,
     title: "About",
@@ -52,12 +52,12 @@ const menu_data: DataType[] = [
     icon: "fas fa-info-circle",
     has_dropdown: false,
   },
-  {
-    id: 6,
-    title: "Contact",
-    link: "/contact",
-    icon: "fas fa-phone-rotary",
-    has_dropdown: false,
-  },
+  // {
+  //   id: 6,
+  //   title: "Contact",
+  //   link: "/contact",
+  //   icon: "fas fa-phone-rotary",
+  //   has_dropdown: false,
+  // },
 ];
 export default menu_data;

@@ -12,10 +12,8 @@ import {
   Brain,
   Target,
   BarChart3,
-  Calendar,
   CheckCircle,
   ArrowRight,
-  Activity,
   Zap,
 } from "lucide-react";
 import { College } from "../../data/colleges-data";
@@ -142,479 +140,1029 @@ const DashboardContent = () => {
   }
 
   return (
-    <section className="dashboard-section section-padding fix">
-      <div className="container">
+    <section
+      className="dashboard-section fix"
+      style={{
+        background: "#f8fafc",
+        minHeight: "100vh",
+        fontFamily:
+          '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+      }}
+    >
+      <div className="container-fluid">
         <div className="row">
-          <div className="col-12">
+          {/* Sidebar */}
+          <div className="col-lg-2 col-md-3 p-0">
+            <div
+              className="sidebar"
+              style={{
+                background: "#ffffff",
+                minHeight: "100vh",
+                boxShadow: "2px 0 10px rgba(0,0,0,0.1)",
+                borderRight: "1px solid #e2e8f0",
+              }}
+            >
+              <div className="p-4">
+                <div className="d-flex align-items-center mb-4">
+                  <div
+                    className="bg-primary rounded-3 p-2 me-3"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)",
+                    }}
+                  >
+                    <GraduationCap className="text-white" size={24} />
+                  </div>
+                  <h5 className="fw-bold text-dark mb-0">eduमार्ग</h5>
+                </div>
+
+                <nav className="nav flex-column">
+                  <a
+                    className="nav-link active d-flex align-items-center py-3 px-3 mb-2 rounded-3"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)",
+                      color: "white",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <Brain className="me-3" size={20} />
+                    Dashboard
+                  </a>
+                  <Link
+                    to="/quiz"
+                    className="nav-link d-flex align-items-center py-3 px-3 mb-2 rounded-3 text-muted"
+                    style={{
+                      textDecoration: "none",
+                      transition: "all 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "#f1f5f9";
+                      e.currentTarget.style.color = "#4f46e5";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "transparent";
+                      e.currentTarget.style.color = "#64748b";
+                    }}
+                  >
+                    <BookOpen className="me-3" size={20} />
+                    Take Quiz
+                  </Link>
+                  <Link
+                    to="/courses"
+                    className="nav-link d-flex align-items-center py-3 px-3 mb-2 rounded-3 text-muted"
+                    style={{
+                      textDecoration: "none",
+                      transition: "all 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "#f1f5f9";
+                      e.currentTarget.style.color = "#4f46e5";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "transparent";
+                      e.currentTarget.style.color = "#64748b";
+                    }}
+                  >
+                    <GraduationCap className="me-3" size={20} />
+                    Courses
+                  </Link>
+                  <Link
+                    to="/about"
+                    className="nav-link d-flex align-items-center py-3 px-3 mb-2 rounded-3 text-muted"
+                    style={{
+                      textDecoration: "none",
+                      transition: "all 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "#f1f5f9";
+                      e.currentTarget.style.color = "#4f46e5";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "transparent";
+                      e.currentTarget.style.color = "#64748b";
+                    }}
+                  >
+                    <Users className="me-3" size={20} />
+                    About
+                  </Link>
+                </nav>
+
+                <div className="mt-auto pt-4">
+                  <button
+                    onClick={handleLogout}
+                    className="btn btn-outline-secondary w-100 py-2 rounded-3"
+                    style={{
+                      border: "1px solid #e2e8f0",
+                      color: "#64748b",
+                      transition: "all 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = "#ef4444";
+                      e.currentTarget.style.color = "#ef4444";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = "#e2e8f0";
+                      e.currentTarget.style.color = "#64748b";
+                    }}
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Main Content */}
+          <div className="col-lg-10 col-md-9 p-4">
             {/* Welcome Header */}
-            <div className="bg-primary bg-opacity-10 rounded-3 p-4 mb-5">
-              <div className="row align-items-center">
+            <div
+              className="rounded-4 p-5 mb-4 position-relative overflow-hidden"
+              style={{
+                background: "linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)",
+                color: "white",
+              }}
+            >
+              {/* Background Illustration */}
+              <div
+                className="position-absolute top-0 end-0 h-100 d-flex align-items-center"
+                style={{ opacity: 0.1 }}
+              >
+                <div className="d-flex gap-4">
+                  <BookOpen size={120} />
+                  <GraduationCap size={100} />
+                  <Brain size={110} />
+                </div>
+              </div>
+
+              <div className="row align-items-center position-relative">
                 <div className="col-md-8">
-                  <h1 className="h2 fw-bold text-dark mb-2">
-                    Welcome back,{" "}
+                  <h1 className="display-6 fw-bold mb-2">
+                    Hello,{" "}
                     {userStats?.data.user.name ||
                       currentUser.displayName ||
-                      currentUser.email}
+                      currentUser.email?.split("@")[0] ||
+                      "Student"}
                     ! 👋
                   </h1>
-                  <p className="text-muted mb-0">
+                  <p className="fs-5 mb-4 opacity-90">
+                    {userStats
+                      ? "Let's continue your learning journey today"
+                      : "Ready to discover your perfect college match?"}
+                  </p>
+                  <p className="mb-4 opacity-80">
                     {userStats
                       ? `Your ${userStats.data.personalityInsights.strongestTrait.toLowerCase()} personality shows great potential for ${
                           userStats.data.personalityInsights.suggestedCareerPath
                         }.`
-                      : "Ready to continue your educational journey? Here are your personalized recommendations."}
+                      : "Set your study plan and growth with our AI-powered recommendations"}
                   </p>
+
                   {userStats && (
-                    <div className="mt-2">
-                      <span className="badge bg-success me-2">
-                        <CheckCircle className="me-1" size={14} />
-                        Profile Complete
-                      </span>
-                      <span className="badge bg-primary">
-                        <TrendingUp className="me-1" size={14} />
-                        {userStats.data.quizPerformance.quizzesTaken} Quizzes
-                        Completed
-                      </span>
+                    <div className="d-flex gap-3">
+                      <div className="d-flex align-items-center bg-white bg-opacity-20 rounded-pill px-3 py-2">
+                        <CheckCircle className="me-2" size={16} />
+                        <span className="small fw-semibold">
+                          Profile Complete
+                        </span>
+                      </div>
+                      <div className="d-flex align-items-center bg-white bg-opacity-20 rounded-pill px-3 py-2">
+                        <TrendingUp className="me-2" size={16} />
+                        <span className="small fw-semibold">
+                          {userStats.data.quizPerformance.quizzesTaken} Quizzes
+                          Completed
+                        </span>
+                      </div>
                     </div>
                   )}
                 </div>
-                <div className="col-md-4 text-md-end">
-                  <div className="d-flex gap-2 justify-content-md-end">
-                    <Link
-                      to="/quiz"
-                      className="btn btn-primary px-4 py-2 rounded-3 fw-semibold"
-                    >
-                      <BookOpen className="me-2" size={18} />
-                      {userStats ? "Take Quiz Again" : "Take Career Quiz"}
-                    </Link>
-                    <button
-                      onClick={handleLogout}
-                      className="btn btn-outline-secondary px-4 py-2 rounded-3 fw-semibold"
-                    >
-                      Sign Out
-                    </button>
-                  </div>
+                <div className="col-md-4 text-md-end mt-4 mt-md-0">
+                  <Link
+                    to="/quiz"
+                    className="btn btn-light btn-lg px-4 py-3 rounded-4 fw-semibold"
+                    style={{
+                      color: "#4f46e5",
+                      boxShadow: "0 8px 32px rgba(255,255,255,0.3)",
+                      transition: "all 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "translateY(-2px)";
+                      e.currentTarget.style.boxShadow =
+                        "0 12px 40px rgba(255,255,255,0.4)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.boxShadow =
+                        "0 8px 32px rgba(255,255,255,0.3)";
+                    }}
+                  >
+                    <BookOpen className="me-2" size={20} />
+                    {userStats ? "Take Quiz Again" : "Start Learning"}
+                  </Link>
                 </div>
               </div>
             </div>
 
-            {/* User Stats Section */}
-            {userStats && (
-              <div className="mb-5">
-                <div className="row g-4 mb-4">
-                  {/* Quiz Performance */}
-                  <div className="col-md-6 col-lg-3">
-                    <div className="bg-white rounded-3 p-4 shadow-sm border h-100">
-                      <div className="d-flex align-items-center mb-3">
-                        <div className="bg-primary bg-opacity-10 rounded-circle p-2 me-3">
-                          <BarChart3 className="text-primary" size={24} />
-                        </div>
-                        <h6 className="fw-semibold text-dark mb-0">
-                          Quiz Performance
-                        </h6>
-                      </div>
-                      <div className="mb-2">
-                        <div className="d-flex justify-content-between align-items-center">
-                          <span className="small text-muted">
-                            Quizzes Taken
-                          </span>
-                          <span className="fw-bold text-primary">
-                            {userStats.data.quizPerformance.quizzesTaken}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="mb-2">
-                        <div className="d-flex justify-content-between align-items-center">
-                          <span className="small text-muted">
-                            Average Score
-                          </span>
-                          <span className="fw-bold text-success">
-                            {userStats.data.quizPerformance.averageScore}/10
-                          </span>
-                        </div>
-                      </div>
-                      <div className="small text-muted">
-                        <Calendar size={14} className="me-1" />
-                        Last:{" "}
-                        {new Date(
-                          userStats.data.quizPerformance.lastQuizDate
-                        ).toLocaleDateString()}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Personality Insights */}
-                  <div className="col-md-6 col-lg-3">
-                    <div className="bg-white rounded-3 p-4 shadow-sm border h-100">
-                      <div className="d-flex align-items-center mb-3">
-                        <div className="bg-success bg-opacity-10 rounded-circle p-2 me-3">
-                          <Brain className="text-success" size={24} />
-                        </div>
-                        <h6 className="fw-semibold text-dark mb-0">
-                          Personality
-                        </h6>
-                      </div>
-                      <div className="mb-2">
-                        <span className="badge bg-success bg-opacity-10 text-success fw-semibold">
-                          {userStats.data.personalityInsights.strongestTrait}
-                        </span>
-                      </div>
-                      <div className="small text-muted mb-2">
-                        {userStats.data.personalityInsights.traitDescription}
-                      </div>
+            {/* Quiz Results Display */}
+            {quizResults ? (
+              <div className="row g-4 mb-5">
+                {/* Quiz Summary */}
+                <div className="col-12">
+                  <div
+                    className="bg-white rounded-4 shadow-lg p-5"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)",
+                      border: "1px solid rgba(255,255,255,0.2)",
+                      backdropFilter: "blur(10px)",
+                    }}
+                  >
+                    <div className="d-flex align-items-center justify-content-between mb-4">
                       <div className="d-flex align-items-center">
                         <div
-                          className="progress flex-grow-1 me-2"
-                          style={{ height: "6px" }}
+                          className="bg-primary rounded-circle p-3 me-3"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                            boxShadow: "0 8px 32px rgba(102, 126, 234, 0.3)",
+                          }}
                         >
-                          <div
-                            className="progress-bar bg-success"
+                          <Brain className="text-white" size={28} />
+                        </div>
+                        <div>
+                          <h3
+                            className="h4 fw-bold text-dark mb-1"
                             style={{
-                              width: `${userStats.data.personalityInsights.confidenceLevel}%`,
+                              background:
+                                "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                              WebkitBackgroundClip: "text",
+                              WebkitTextFillColor: "transparent",
+                              backgroundClip: "text",
                             }}
-                          ></div>
-                        </div>
-                        <span className="small fw-bold text-success">
-                          {userStats.data.personalityInsights.confidenceLevel}%
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Career Path */}
-                  <div className="col-md-6 col-lg-3">
-                    <div className="bg-white rounded-3 p-4 shadow-sm border h-100">
-                      <div className="d-flex align-items-center mb-3">
-                        <div className="bg-warning bg-opacity-10 rounded-circle p-2 me-3">
-                          <Target className="text-warning" size={24} />
-                        </div>
-                        <h6 className="fw-semibold text-dark mb-0">
-                          Career Path
-                        </h6>
-                      </div>
-                      <div className="mb-2">
-                        <span className="fw-semibold text-dark">
-                          {
-                            userStats.data.personalityInsights
-                              .suggestedCareerPath
-                          }
-                        </span>
-                      </div>
-                      <div className="small text-muted">
-                        {userStats.data.recommendations}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Profile Status */}
-                  <div className="col-md-6 col-lg-3">
-                    <div className="bg-white rounded-3 p-4 shadow-sm border h-100">
-                      <div className="d-flex align-items-center mb-3">
-                        <div className="bg-info bg-opacity-10 rounded-circle p-2 me-3">
-                          <Activity className="text-info" size={24} />
-                        </div>
-                        <h6 className="fw-semibold text-dark mb-0">Profile</h6>
-                      </div>
-                      <div className="d-flex align-items-center mb-2">
-                        <CheckCircle className="text-success me-2" size={16} />
-                        <span className="small text-success fw-semibold">
-                          Profile Complete
-                        </span>
-                      </div>
-                      <div className="small text-muted">
-                        <strong>Name:</strong> {userStats.data.user.name}
-                      </div>
-                      <div className="small text-muted">
-                        <strong>Email:</strong> {currentUser.email}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Top Interests */}
-                <div className="bg-white rounded-3 p-4 shadow-sm border mb-4">
-                  <div className="d-flex align-items-center justify-content-between mb-4">
-                    <h5 className="fw-bold text-dark mb-0">
-                      <Zap className="text-primary me-2" size={24} />
-                      Your Top Interests & Strengths
-                    </h5>
-                    <span className="badge bg-primary">Top 3</span>
-                  </div>
-
-                  <div className="row g-3">
-                    {userStats.data.topInterests.map((interest, index) => (
-                      <div key={index} className="col-md-4">
-                        <div className="border rounded-3 p-3 h-100">
-                          <div className="d-flex justify-content-between align-items-center mb-2">
-                            <h6 className="fw-semibold text-dark mb-0">
-                              {interest.interest}
-                            </h6>
-                            <span className="badge bg-primary bg-opacity-10 text-primary">
-                              {interest.score}/10
-                            </span>
-                          </div>
-                          <div className="mb-2">
-                            <span
-                              className={`badge ${
-                                interest.strength === "Very Strong"
-                                  ? "bg-success"
-                                  : interest.strength === "Strong"
-                                  ? "bg-warning"
-                                  : "bg-secondary"
-                              } bg-opacity-10 ${
-                                interest.strength === "Very Strong"
-                                  ? "text-success"
-                                  : interest.strength === "Strong"
-                                  ? "text-warning"
-                                  : "text-secondary"
-                              } fw-semibold`}
-                            >
-                              {interest.strength}
-                            </span>
-                          </div>
-                          <div className="progress" style={{ height: "8px" }}>
-                            <div
-                              className={`progress-bar ${
-                                interest.strength === "Very Strong"
-                                  ? "bg-success"
-                                  : interest.strength === "Strong"
-                                  ? "bg-warning"
-                                  : "bg-secondary"
-                              }`}
-                              style={{
-                                width: `${(interest.score / 10) * 100}%`,
-                              }}
-                            ></div>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Next Steps */}
-                <div className="bg-white rounded-3 p-4 shadow-sm border mb-4">
-                  <h5 className="fw-bold text-dark mb-3">
-                    <ArrowRight className="text-primary me-2" size={24} />
-                    Recommended Next Steps
-                  </h5>
-                  <div className="row g-3">
-                    {userStats.data.nextSteps.map((step, index) => (
-                      <div key={index} className="col-md-6">
-                        <div className="d-flex align-items-start">
-                          <div
-                            className="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0"
-                            style={{ width: "24px", height: "24px" }}
                           >
-                            <span className="text-white small fw-bold">
-                              {index + 1}
-                            </span>
-                          </div>
-                          <div className="flex-grow-1">
-                            <p className="mb-0 text-dark">{step}</p>
-                          </div>
+                            Your Quiz Results
+                          </h3>
+                          <p className="text-muted mb-0 fs-6">
+                            Completed on{" "}
+                            {new Date(
+                              quizResults.completedAt
+                            ).toLocaleDateString("en-US", {
+                              weekday: "long",
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            })}
+                          </p>
                         </div>
                       </div>
-                    ))}
-                  </div>
-                  <div className="mt-3 pt-3 border-top">
-                    <Link to="/quiz" className="btn btn-primary me-3">
-                      <Brain className="me-2" size={16} />
-                      Take Another Quiz
-                    </Link>
-                    <Link to="/courses" className="btn btn-outline-primary">
-                      <BookOpen className="me-2" size={16} />
-                      Explore Courses
-                    </Link>
+                      <Link
+                        to="/quiz"
+                        className="btn px-4 py-3 rounded-4 fw-semibold text-white border-0"
+                        style={{
+                          background:
+                            "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                          boxShadow: "0 8px 32px rgba(16, 185, 129, 0.4)",
+                          transition: "all 0.3s ease",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.transform = "translateY(-2px)";
+                          e.currentTarget.style.boxShadow =
+                            "0 12px 40px rgba(16, 185, 129, 0.6)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.transform = "translateY(0)";
+                          e.currentTarget.style.boxShadow =
+                            "0 8px 32px rgba(16, 185, 129, 0.4)";
+                        }}
+                      >
+                        <ArrowRight className="me-2" size={18} />
+                        Retake Quiz
+                      </Link>
+                    </div>
+
+                    {/* Quiz Answers Summary */}
+                    <div className="row g-4">
+                      <div className="col-lg-3 col-md-6">
+                        <div
+                          className="bg-white rounded-4 p-4 text-center shadow-sm border-0"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                            color: "white",
+                            boxShadow: "0 8px 32px rgba(102, 126, 234, 0.3)",
+                            transition: "all 0.3s ease",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.transform =
+                              "translateY(-5px)";
+                            e.currentTarget.style.boxShadow =
+                              "0 16px 48px rgba(102, 126, 234, 0.4)";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = "translateY(0)";
+                            e.currentTarget.style.boxShadow =
+                              "0 8px 32px rgba(102, 126, 234, 0.3)";
+                          }}
+                        >
+                          <Target className="mb-3" size={40} />
+                          <h6 className="fw-bold mb-2 fs-5">Stream</h6>
+                          <p className="mb-0 opacity-90">
+                            {quizResults.answers[1] || "Not specified"}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="col-lg-3 col-md-6">
+                        <div
+                          className="bg-white rounded-4 p-4 text-center shadow-sm border-0"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                            color: "white",
+                            boxShadow: "0 8px 32px rgba(16, 185, 129, 0.3)",
+                            transition: "all 0.3s ease",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.transform =
+                              "translateY(-5px)";
+                            e.currentTarget.style.boxShadow =
+                              "0 16px 48px rgba(16, 185, 129, 0.4)";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = "translateY(0)";
+                            e.currentTarget.style.boxShadow =
+                              "0 8px 32px rgba(16, 185, 129, 0.3)";
+                          }}
+                        >
+                          <MapPin className="mb-3" size={40} />
+                          <h6 className="fw-bold mb-2 fs-5">Location</h6>
+                          <p className="mb-0 opacity-90">
+                            {Array.isArray(quizResults.answers.location)
+                              ? quizResults.answers.location
+                                  .slice(0, 2)
+                                  .join(", ")
+                              : quizResults.answers.location || "Any"}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="col-lg-3 col-md-6">
+                        <div
+                          className="bg-white rounded-4 p-4 text-center shadow-sm border-0"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
+                            color: "white",
+                            boxShadow: "0 8px 32px rgba(245, 158, 11, 0.3)",
+                            transition: "all 0.3s ease",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.transform =
+                              "translateY(-5px)";
+                            e.currentTarget.style.boxShadow =
+                              "0 16px 48px rgba(245, 158, 11, 0.4)";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = "translateY(0)";
+                            e.currentTarget.style.boxShadow =
+                              "0 8px 32px rgba(245, 158, 11, 0.3)";
+                          }}
+                        >
+                          <Award className="mb-3" size={40} />
+                          <h6 className="fw-bold mb-2 fs-5">Management</h6>
+                          <p className="mb-0 opacity-90">
+                            {quizResults.answers.management || "Any"}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="col-lg-3 col-md-6">
+                        <div
+                          className="bg-white rounded-4 p-4 text-center shadow-sm border-0"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)",
+                            color: "white",
+                            boxShadow: "0 8px 32px rgba(59, 130, 246, 0.3)",
+                            transition: "all 0.3s ease",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.transform =
+                              "translateY(-5px)";
+                            e.currentTarget.style.boxShadow =
+                              "0 16px 48px rgba(59, 130, 246, 0.4)";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = "translateY(0)";
+                            e.currentTarget.style.boxShadow =
+                              "0 8px 32px rgba(59, 130, 246, 0.3)";
+                          }}
+                        >
+                          <BarChart3 className="mb-3" size={40} />
+                          <h6 className="fw-bold mb-2 fs-5">Budget</h6>
+                          <p className="mb-0 opacity-90">
+                            {quizResults.answers.budget || "Not specified"}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
 
-            {/* Quiz Results Section */}
-            {quizResults && quizResults.collegeResults.length > 0 && (
-              <div className="mb-5">
-                <div className="d-flex justify-content-between align-items-center mb-4">
-                  <h3 className="h4 fw-bold text-dark">
-                    Your Personalized College Recommendations
-                  </h3>
-                  <span className="badge bg-success px-3 py-2">
-                    <TrendingUp className="me-1" size={16} />
-                    AI Matched
-                  </span>
-                </div>
-
-                <div className="row g-4">
-                  {quizResults.collegeResults.map((college, index) => (
-                    <div key={index} className="col-lg-6">
-                      <div className="bg-white rounded-3 shadow-sm border overflow-hidden h-100">
-                        <div className="row g-0">
-                          <div className="col-4">
-                            <img
-                              src={college.image}
-                              alt={college.name}
-                              className="w-100 h-100 object-fit-cover"
-                              style={{ minHeight: "200px" }}
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.src = `https://via.placeholder.com/300x200/6366f1/ffffff?text=${encodeURIComponent(
-                                  college.name
-                                )}`;
-                              }}
-                            />
-                          </div>
-                          <div className="col-8">
-                            <div className="card-body p-3">
-                              <div className="d-flex justify-content-between align-items-start mb-2">
-                                <div className="flex-grow-1 me-2">
-                                  <h5
-                                    className="card-title fw-bold text-dark mb-1"
-                                    style={{ fontSize: "1rem" }}
-                                  >
+                {/* Recommended Colleges */}
+                <div className="col-12">
+                  <div
+                    className="bg-white rounded-4 shadow-lg p-5"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)",
+                      border: "1px solid rgba(255,255,255,0.2)",
+                      backdropFilter: "blur(10px)",
+                    }}
+                  >
+                    <div className="d-flex align-items-center justify-content-between mb-4">
+                      <div className="d-flex align-items-center">
+                        <div
+                          className="bg-primary rounded-circle p-3 me-3"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                            boxShadow: "0 8px 32px rgba(102, 126, 234, 0.3)",
+                          }}
+                        >
+                          <GraduationCap className="text-white" size={28} />
+                        </div>
+                        <div>
+                          <h3
+                            className="h4 fw-bold text-dark mb-1"
+                            style={{
+                              background:
+                                "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                              WebkitBackgroundClip: "text",
+                              WebkitTextFillColor: "transparent",
+                              backgroundClip: "text",
+                            }}
+                          >
+                            Your Recommended Colleges
+                          </h3>
+                          <p className="text-muted mb-0 fs-6">
+                            {quizResults.collegeResults.length} colleges matched
+                            to your preferences
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="row g-4">
+                      {quizResults.collegeResults.map((college, index) => (
+                        <div key={index} className="col-lg-6">
+                          <div
+                            className="bg-white rounded-4 shadow-lg border-0 overflow-hidden h-100"
+                            style={{
+                              transition: "all 0.3s ease",
+                              boxShadow: "0 8px 32px rgba(0,0,0,0.1)",
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.transform =
+                                "translateY(-8px)";
+                              e.currentTarget.style.boxShadow =
+                                "0 16px 48px rgba(0,0,0,0.15)";
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.transform = "translateY(0)";
+                              e.currentTarget.style.boxShadow =
+                                "0 8px 32px rgba(0,0,0,0.1)";
+                            }}
+                          >
+                            <div className="row g-0">
+                              <div className="col-md-5 position-relative">
+                                <img
+                                  src={college.image}
+                                  alt={college.name}
+                                  className="w-100 h-100 object-fit-cover"
+                                  style={{ minHeight: "220px" }}
+                                  onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.src = `https://via.placeholder.com/300x220/6366f1/ffffff?text=${encodeURIComponent(
+                                      college.name
+                                    )}`;
+                                  }}
+                                />
+                                {college.matchPercentage && (
+                                  <div className="position-absolute top-0 start-0 m-3">
+                                    <span
+                                      className="badge px-3 py-2 rounded-pill fs-6"
+                                      style={{
+                                        background:
+                                          "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                                        color: "white",
+                                        boxShadow:
+                                          "0 4px 16px rgba(16, 185, 129, 0.4)",
+                                      }}
+                                    >
+                                      {college.matchPercentage}% Match
+                                    </span>
+                                  </div>
+                                )}
+                              </div>
+                              <div className="col-md-7">
+                                <div className="card-body p-4">
+                                  <h5 className="fw-bold text-dark mb-3 fs-5">
                                     {college.name}
                                   </h5>
-                                  <div className="d-flex align-items-center text-muted mb-2 small">
-                                    <MapPin size={12} className="me-1" />
-                                    <span>{college.location}</span>
+                                  <div className="d-flex align-items-center text-muted mb-3">
+                                    <MapPin
+                                      size={16}
+                                      className="me-2 text-primary"
+                                    />
+                                    <span className="small">
+                                      {college.location}
+                                    </span>
+                                    <span className="mx-3">•</span>
+                                    <span
+                                      className="badge px-3 py-1 rounded-pill small"
+                                      style={{
+                                        background:
+                                          "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                                        color: "white",
+                                      }}
+                                    >
+                                      {college.type}
+                                    </span>
                                   </div>
-                                </div>
-                                <div className="d-flex align-items-center">
-                                  <Star
-                                    size={14}
-                                    className="text-warning me-1"
-                                  />
-                                  <span className="small fw-bold text-dark">
-                                    {college.rating}
-                                  </span>
+                                  <div className="d-flex align-items-center mb-3">
+                                    <div className="d-flex align-items-center me-4">
+                                      <Star
+                                        size={18}
+                                        className="text-warning me-1"
+                                      />
+                                      <span className="fw-bold fs-5">
+                                        {college.rating}
+                                      </span>
+                                    </div>
+                                    <div className="d-flex align-items-center">
+                                      <Users
+                                        size={16}
+                                        className="text-primary me-1"
+                                      />
+                                      <span className="small text-muted">
+                                        {college.students} Students
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div className="d-flex align-items-center mb-4">
+                                    <Award
+                                      size={16}
+                                      className="text-success me-2"
+                                    />
+                                    <span className="small text-muted">
+                                      <strong>Fees:</strong> {college.fees}
+                                    </span>
+                                  </div>
+                                  <button
+                                    onClick={() =>
+                                      window.open(college.website, "_blank")
+                                    }
+                                    className="btn px-4 py-2 rounded-4 fw-semibold text-white border-0 w-100"
+                                    style={{
+                                      background:
+                                        "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                                      boxShadow:
+                                        "0 4px 16px rgba(102, 126, 234, 0.3)",
+                                      transition: "all 0.3s ease",
+                                    }}
+                                    onMouseEnter={(e) => {
+                                      e.currentTarget.style.transform =
+                                        "translateY(-2px)";
+                                      e.currentTarget.style.boxShadow =
+                                        "0 8px 24px rgba(102, 126, 234, 0.4)";
+                                    }}
+                                    onMouseLeave={(e) => {
+                                      e.currentTarget.style.transform =
+                                        "translateY(0)";
+                                      e.currentTarget.style.boxShadow =
+                                        "0 4px 16px rgba(102, 126, 234, 0.3)";
+                                    }}
+                                  >
+                                    Learn More
+                                    <ArrowRight className="ms-2" size={16} />
+                                  </button>
                                 </div>
                               </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
 
-                              <div className="small text-muted mb-2">
-                                <span className="badge bg-primary bg-opacity-10 text-primary fw-semibold mb-1">
-                                  {college.type}
+                {/* Performance Insights */}
+                {userStats && (
+                  <div className="col-12">
+                    <div
+                      className="bg-white rounded-4 shadow-lg p-5"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)",
+                        border: "1px solid rgba(255,255,255,0.2)",
+                        backdropFilter: "blur(10px)",
+                      }}
+                    >
+                      <div className="d-flex align-items-center mb-4">
+                        <div
+                          className="bg-primary rounded-circle p-3 me-3"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                            boxShadow: "0 8px 32px rgba(102, 126, 234, 0.3)",
+                          }}
+                        >
+                          <Zap className="text-white" size={28} />
+                        </div>
+                        <div>
+                          <h3
+                            className="h4 fw-bold text-dark mb-1"
+                            style={{
+                              background:
+                                "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                              WebkitBackgroundClip: "text",
+                              WebkitTextFillColor: "transparent",
+                              backgroundClip: "text",
+                            }}
+                          >
+                            Your Career Insights
+                          </h3>
+                          <p className="text-muted mb-0 fs-6">
+                            AI-powered analysis of your personality and
+                            interests
+                          </p>
+                        </div>
+                      </div>
+                      <div className="row g-4">
+                        <div className="col-md-6">
+                          <div
+                            className="bg-white rounded-4 p-4 shadow-sm border-0"
+                            style={{
+                              background:
+                                "linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)",
+                            }}
+                          >
+                            <h6 className="fw-bold text-dark mb-4 fs-5">
+                              <BarChart3
+                                className="text-primary me-2"
+                                size={20}
+                              />
+                              Top Interests
+                            </h6>
+                            {userStats.data.topInterests.map(
+                              (interest, idx) => (
+                                <div key={idx} className="mb-4">
+                                  <div className="d-flex justify-content-between align-items-center mb-2">
+                                    <span className="text-dark fw-semibold">
+                                      {interest.interest}
+                                    </span>
+                                    <span
+                                      className="badge px-3 py-1 rounded-pill"
+                                      style={{
+                                        background:
+                                          "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                                        color: "white",
+                                      }}
+                                    >
+                                      {interest.score}/10
+                                    </span>
+                                  </div>
+                                  <div
+                                    className="progress mb-2"
+                                    style={{
+                                      height: "8px",
+                                      borderRadius: "10px",
+                                    }}
+                                  >
+                                    <div
+                                      className="progress-bar"
+                                      style={{
+                                        width: `${
+                                          (interest.score / 10) * 100
+                                        }%`,
+                                        background:
+                                          "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                                        borderRadius: "10px",
+                                      }}
+                                    ></div>
+                                  </div>
+                                  <p className="small text-muted mb-0">
+                                    {interest.strength}
+                                  </p>
+                                </div>
+                              )
+                            )}
+                          </div>
+                        </div>
+                        <div className="col-md-6">
+                          <div
+                            className="bg-white rounded-4 p-4 shadow-sm border-0"
+                            style={{
+                              background:
+                                "linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)",
+                            }}
+                          >
+                            <h6 className="fw-bold text-dark mb-4 fs-5">
+                              <Brain className="text-primary me-2" size={20} />
+                              Personality Insights
+                            </h6>
+                            <div
+                              className="bg-white rounded-4 p-4 shadow-sm border-0"
+                              style={{
+                                background:
+                                  "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                                color: "white",
+                              }}
+                            >
+                              <h6 className="fw-bold mb-3 fs-5">
+                                {
+                                  userStats.data.personalityInsights
+                                    .strongestTrait
+                                }{" "}
+                                Personality
+                              </h6>
+                              <p className="small mb-3 opacity-90">
+                                {
+                                  userStats.data.personalityInsights
+                                    .traitDescription
+                                }
+                              </p>
+                              <div className="d-flex align-items-center justify-content-between">
+                                <span className="small">
+                                  <strong>Suggested Path:</strong>
                                 </span>
-                              </div>
-
-                              <div className="row g-2 mb-2 small">
-                                <div className="col-6">
-                                  <div className="d-flex align-items-center">
-                                    <Users size={12} className="me-1" />
-                                    <span>{college.students}</span>
-                                  </div>
-                                </div>
-                                <div className="col-6">
-                                  <div className="d-flex align-items-center">
-                                    <Award size={12} className="me-1" />
-                                    <span>{college.fees}</span>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className="d-flex justify-content-between align-items-center">
-                                <span className="badge bg-success small">
-                                  {college.matchPercentage}% Match
-                                </span>
-                                <button
-                                  onClick={() =>
-                                    window.open(college.website, "_blank")
-                                  }
-                                  className="btn btn-sm btn-primary rounded-3 fw-semibold"
+                                <span
+                                  className="badge px-3 py-1 rounded-pill"
+                                  style={{
+                                    background: "rgba(255,255,255,0.2)",
+                                    color: "white",
+                                  }}
                                 >
-                                  Learn More
-                                </button>
+                                  {
+                                    userStats.data.personalityInsights
+                                      .suggestedCareerPath
+                                  }
+                                </span>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div>
+                {/* No Quiz Results - Statistics Cards */}
+                <div className="row g-4 mb-4">
+                  {/* Statistics Cards */}
+                  <div className="col-lg-3 col-md-6">
+                    <div
+                      className="bg-white rounded-4 p-4 shadow-sm border-0"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)",
+                        color: "white",
+                      }}
+                    >
+                      <div className="d-flex align-items-center justify-content-between">
+                        <div>
+                          <h3 className="h2 fw-bold mb-1">500+</h3>
+                          <p className="mb-0 opacity-90">Colleges Available</p>
+                        </div>
+                        <GraduationCap size={40} className="opacity-80" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-3 col-md-6">
+                    <div
+                      className="bg-white rounded-4 p-4 shadow-sm border-0"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                        color: "white",
+                      }}
+                    >
+                      <div className="d-flex align-items-center justify-content-between">
+                        <div>
+                          <h3 className="h2 fw-bold mb-1">25k+</h3>
+                          <p className="mb-0 opacity-90">Students Guided</p>
+                        </div>
+                        <Users size={40} className="opacity-80" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-3 col-md-6">
+                    <div
+                      className="bg-white rounded-4 p-4 shadow-sm border-0"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
+                        color: "white",
+                      }}
+                    >
+                      <div className="d-flex align-items-center justify-content-between">
+                        <div>
+                          <h3 className="h2 fw-bold mb-1">95%</h3>
+                          <p className="mb-0 opacity-90">Success Rate</p>
+                        </div>
+                        <TrendingUp size={40} className="opacity-80" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-lg-3 col-md-6">
+                    <div
+                      className="bg-white rounded-4 p-4 shadow-sm border-0"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)",
+                        color: "white",
+                      }}
+                    >
+                      <div className="d-flex align-items-center justify-content-between">
+                        <div>
+                          <h3 className="h2 fw-bold mb-1">4.8</h3>
+                          <p className="mb-0 opacity-90">Average Rating</p>
+                        </div>
+                        <Star size={40} className="opacity-80" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="text-center mt-4">
+                {/* Main CTA Card */}
+                <div className="bg-white rounded-4 p-5 shadow-sm border text-center mb-4">
+                  <div className="mb-4">
+                    <div
+                      className="d-inline-flex align-items-center justify-content-center rounded-circle mb-3"
+                      style={{
+                        width: "80px",
+                        height: "80px",
+                        background:
+                          "linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)",
+                      }}
+                    >
+                      <Brain className="text-white" size={40} />
+                    </div>
+                  </div>
+                  <h3 className="h4 fw-bold text-dark mb-3">
+                    Ready to Find Your Perfect College?
+                  </h3>
+                  <p className="text-muted mb-4 fs-6">
+                    Take our AI-powered career guidance quiz to get personalized
+                    college recommendations based on your interests, goals, and
+                    preferences.
+                  </p>
                   <Link
                     to="/quiz"
-                    className="btn btn-outline-primary px-4 py-2 rounded-3 fw-semibold"
+                    className="btn btn-lg px-5 py-3 rounded-4 fw-semibold text-white border-0"
+                    style={{
+                      background:
+                        "linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)",
+                      boxShadow: "0 8px 32px rgba(79, 70, 229, 0.4)",
+                      transition: "all 0.3s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "translateY(-2px)";
+                      e.currentTarget.style.boxShadow =
+                        "0 12px 40px rgba(79, 70, 229, 0.6)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "translateY(0)";
+                      e.currentTarget.style.boxShadow =
+                        "0 8px 32px rgba(79, 70, 229, 0.4)";
+                    }}
                   >
-                    Retake Quiz for Updated Recommendations
+                    <BookOpen className="me-2" size={20} />
+                    Start Career Guidance Quiz
                   </Link>
                 </div>
               </div>
             )}
 
-            {/* No Quiz Results */}
-            {!quizResults && (
-              <div className="bg-white rounded-3 p-5 shadow-sm border text-center">
-                <GraduationCap className="text-primary mb-3" size={64} />
-                <h3 className="h4 fw-bold text-dark mb-3">
-                  Ready to Find Your Perfect College?
-                </h3>
-                <p className="text-muted mb-4">
-                  Take our AI-powered career guidance quiz to get personalized
-                  college recommendations based on your interests, goals, and
-                  preferences.
-                </p>
-                <Link
-                  to="/quiz"
-                  className="btn btn-primary btn-lg px-5 py-3 rounded-3 fw-semibold"
-                >
-                  Take Career Guidance Quiz
-                </Link>
-              </div>
-            )}
-
             {/* Additional Resources */}
-            <div className="mt-5">
-              <h3 className="h4 fw-bold text-dark mb-4">Explore More</h3>
+            <div className="mt-4">
+              <div className="d-flex align-items-center justify-content-between mb-4">
+                <h3 className="h5 fw-bold text-dark mb-0">Quick Actions</h3>
+                <span className="text-muted small">Explore more features</span>
+              </div>
               <div className="row g-4">
                 <div className="col-md-4">
-                  <div className="bg-white rounded-3 p-4 shadow-sm border text-center">
-                    <BookOpen className="text-primary mb-3" size={48} />
-                    <h5 className="fw-semibold text-dark mb-2">
-                      Browse Courses
-                    </h5>
-                    <p className="text-muted small mb-3">
-                      Explore our comprehensive course catalog
-                    </p>
-                    <Link
-                      to="/courses"
-                      className="btn btn-outline-primary btn-sm rounded-3 fw-semibold"
+                  <Link to="/courses" className="text-decoration-none">
+                    <div
+                      className="bg-white rounded-4 p-4 shadow-sm border-0 text-center h-100"
+                      style={{
+                        transition: "all 0.3s ease",
+                        cursor: "pointer",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = "translateY(-4px)";
+                        e.currentTarget.style.boxShadow =
+                          "0 12px 32px rgba(0,0,0,0.15)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = "translateY(0)";
+                        e.currentTarget.style.boxShadow =
+                          "0 4px 16px rgba(0,0,0,0.1)";
+                      }}
                     >
-                      View Courses
-                    </Link>
-                  </div>
+                      <div
+                        className="d-inline-flex align-items-center justify-content-center rounded-circle mb-3"
+                        style={{
+                          width: "60px",
+                          height: "60px",
+                          background:
+                            "linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%)",
+                        }}
+                      >
+                        <BookOpen className="text-white" size={28} />
+                      </div>
+                      <h6 className="fw-bold text-dark mb-2">Browse Courses</h6>
+                      <p className="text-muted small mb-0">
+                        Explore our comprehensive course catalog
+                      </p>
+                    </div>
+                  </Link>
                 </div>
                 <div className="col-md-4">
-                  <div className="bg-white rounded-3 p-4 shadow-sm border text-center">
-                    <GraduationCap className="text-primary mb-3" size={48} />
-                    <h5 className="fw-semibold text-dark mb-2">
-                      About EduSpace
-                    </h5>
-                    <p className="text-muted small mb-3">
-                      Learn more about our mission and values
-                    </p>
-                    <Link
-                      to="/about"
-                      className="btn btn-outline-primary btn-sm rounded-3 fw-semibold"
+                  <Link to="/about" className="text-decoration-none">
+                    <div
+                      className="bg-white rounded-4 p-4 shadow-sm border-0 text-center h-100"
+                      style={{
+                        transition: "all 0.3s ease",
+                        cursor: "pointer",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = "translateY(-4px)";
+                        e.currentTarget.style.boxShadow =
+                          "0 12px 32px rgba(0,0,0,0.15)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = "translateY(0)";
+                        e.currentTarget.style.boxShadow =
+                          "0 4px 16px rgba(0,0,0,0.1)";
+                      }}
                     >
-                      Learn More
-                    </Link>
-                  </div>
+                      <div
+                        className="d-inline-flex align-items-center justify-content-center rounded-circle mb-3"
+                        style={{
+                          width: "60px",
+                          height: "60px",
+                          background:
+                            "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                        }}
+                      >
+                        <GraduationCap className="text-white" size={28} />
+                      </div>
+                      <h6 className="fw-bold text-dark mb-2">About eduमार्ग</h6>
+                      <p className="text-muted small mb-0">
+                        Learn more about our mission and values
+                      </p>
+                    </div>
+                  </Link>
                 </div>
                 <div className="col-md-4">
-                  <div className="bg-white rounded-3 p-4 shadow-sm border text-center">
-                    <Award className="text-primary mb-3" size={48} />
-                    <h5 className="fw-semibold text-dark mb-2">Get Support</h5>
-                    <p className="text-muted small mb-3">
-                      Need help? Contact our support team
-                    </p>
-                    <Link
-                      to="/contact"
-                      className="btn btn-outline-primary btn-sm rounded-3 fw-semibold"
+                  <Link to="/contact" className="text-decoration-none">
+                    <div
+                      className="bg-white rounded-4 p-4 shadow-sm border-0 text-center h-100"
+                      style={{
+                        transition: "all 0.3s ease",
+                        cursor: "pointer",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = "translateY(-4px)";
+                        e.currentTarget.style.boxShadow =
+                          "0 12px 32px rgba(0,0,0,0.15)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = "translateY(0)";
+                        e.currentTarget.style.boxShadow =
+                          "0 4px 16px rgba(0,0,0,0.1)";
+                      }}
                     >
-                      Contact Us
-                    </Link>
-                  </div>
+                      <div
+                        className="d-inline-flex align-items-center justify-content-center rounded-circle mb-3"
+                        style={{
+                          width: "60px",
+                          height: "60px",
+                          background:
+                            "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
+                        }}
+                      >
+                        <Award className="text-white" size={28} />
+                      </div>
+                      <h6 className="fw-bold text-dark mb-2">Get Support</h6>
+                      <p className="text-muted small mb-0">
+                        Need help? Contact our support team
+                      </p>
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>

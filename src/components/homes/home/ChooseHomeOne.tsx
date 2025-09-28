@@ -11,7 +11,7 @@ const ChooseHomeOne = () => {
             </div>
             <div className="choose-us-top">
               <div className="section-title mb-0">
-                <h6 className="wow fadeInUp">Why Choose CollegeMatch</h6>
+                <h6 className="wow fadeInUp">Why Choose eduमार्ग</h6>
                 <h2 className="wow fadeInUp" data-wow-delay=".3s">
                   Find Your Perfect <br /> College Match with <br /> AI-Powered
                   Precision

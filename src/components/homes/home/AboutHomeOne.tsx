@@ -12,13 +12,13 @@ const AboutHomeOne = () => {
                 data-wow-duration="1.5s"
                 data-wow-delay="0.3s"
               >
-                <img src="assets/img/about/01.jpg" alt="img" />
+                <img src="assets/img/about/AI-2.png" alt="img" />
               </div>
             </div>
             <div className="col-xl-5 col-lg-6 col-md-6">
               <div className="about-content">
                 <div className="section-title">
-                  <h6 className="wow fadeInUp">About CollegeMatch</h6>
+                  <h6 className="wow fadeInUp">About eduमार्ग</h6>
                   <h2 className="wow fadeInUp" data-wow-delay=".3s">
                     AI-Powered College <br />& Degree Discovery
                   </h2>
@@ -35,7 +35,7 @@ const AboutHomeOne = () => {
                     data-wow-delay=".3s"
                   >
                     <h2>
-                      <span className="count">500</span>+
+                      <span className="count">200</span>+
                     </h2>
                     <p>Colleges & Universities</p>
                   </div>
@@ -68,7 +68,7 @@ const AboutHomeOne = () => {
                   data-wow-duration="1.5s"
                   data-wow-delay="0.3s"
                 >
-                  <img src="assets/img/about/02.jpg" alt="img" />
+                  <img src="assets/img/about/University-1.jpg" alt="img" />
                 </div>
               </div>
             </div>
